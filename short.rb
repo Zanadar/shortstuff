@@ -32,11 +32,6 @@ post '/s' do
   haml :response
 end
 
-error Exception do
-  "That's a bad url"
-end
-
-
 ## Best effort to make a valid url
 def gen_url(url)
   begin
@@ -46,7 +41,7 @@ def gen_url(url)
       return URI::HTTP.build(host: url).to_s
     end
   rescue
-    redirect 404
+    halt "That's a bad url!"
   end
 end
 
