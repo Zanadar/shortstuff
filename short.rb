@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'securerandom'
 require 'pstore'
+require 'pry'
 
 store = PStore.new('urls.store')
 
@@ -8,15 +9,23 @@ get '/' do
   haml :form
 end
 
-post '/' do
-  "Success!!!"
+get '/*' do
+  key = @params[:splat][0]
+  url = store.transaction {store[key]}
+  if !url
+    redirect to('/')
+  else
+    redirect url
+  end
 end
 
 post '/s' do
-  binding.pry
+  @key = SecureRandom.urlsafe_base64(7)
+  url =  params[:url]
   store.transaction do
-    store[params[:key]] = 'stored'
+    store[@key] = url
   end
+  haml :response
 end
 
 get '/k/:key' do
