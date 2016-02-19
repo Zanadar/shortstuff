@@ -1,0 +1,6 @@
+%h1 That's a bad URL you dingus!
+
+%h3
+  = env['sinatra.error'].message
+
+%a{:href => back} Try again?!

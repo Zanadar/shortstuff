@@ -33,7 +33,7 @@ post '/s' do
 end
 
 error URI::InvalidComponentError do
-  haml :error
+  haml :url_error
 end
 
 not_found do
