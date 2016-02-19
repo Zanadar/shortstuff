@@ -5,16 +5,21 @@ require 'pstore'
 store = PStore.new('urls.store')
 
 get '/' do
-  "Test"
+  haml :form
 end
 
-get '/s/:key' do
+post '/' do
+  "Success!!!"
+end
+
+post '/s' do
+  binding.pry
   store.transaction do
     store[params[:key]] = 'stored'
   end
 end
 
 get '/k/:key' do
-store.transaction { store.fetch(params[:key], "Not found")}
+  store.transaction { store.fetch(params[:key], "Not found")}
 end
 
