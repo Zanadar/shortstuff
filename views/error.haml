@@ -1,0 +1,9 @@
+%h1 Something went majorly wrong!
+
+%h3
+  It was a
+  = env['sinatra.error'].message
+  error
+
+
+%a{:href => url('/')} Try again?!
