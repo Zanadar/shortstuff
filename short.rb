@@ -15,6 +15,6 @@ get '/s/:key' do
 end
 
 get '/k/:key' do
-  store.fetch(params[:key], "Not found")
+store.transaction { store.fetch(params[:key], "Not found")}
 end
 
