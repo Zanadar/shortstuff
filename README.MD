@@ -1,9 +1,10 @@
-##### Shortstuff
-I built this little url shortener in a couple hours for fun. I thought it was a fun thing.
+# Shortstuff
+I built this little url shortener in a couple hours as an experiment with sinatra. I thought it was a fun thing, so I
+deployed it.
 
-##### How to us it.
-`Cd` into the home directory and `rackup`. At `localhost:9292` you'll be given a quick form to fill out and supplied with a url. Its using `pstore` to perist the URLs at the moment, so this is kinda bad.
+## How?
+It's available for use [here](https://shortstuff.herokuapp.com). It basically creates a dictionary with url
+safe strings as key and the urls as values. When you navigate to your short url, it'll handle redirects. It
+has some code that attempts to build valid urls even out of bad strings.
 
-###### Todo:
-- Deploy
-- Use a database for persistence.
+Right now it's using `pstore` for persistence, which is fine for the moment but not a real solution.
